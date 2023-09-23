@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome', 50);
             $table->integer('estoque');
             $table->text('descricao');
-            $table->integer('preco');
+            $table->decimal('valor',9,2);
             $table->timestamps();
         });
     }

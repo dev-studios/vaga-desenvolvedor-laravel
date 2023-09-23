@@ -21,13 +21,10 @@ class VendaSeeder extends Seeder
         $faker = \Faker\Factory::create('pt_BR');
         for($i=1;$i<=$quant;$i++) { 
             Venda::create ([ 
-                'venda_id'  =>  $faker->numberBetween(0, 5),
                 'comprador_id'  =>  $faker->numberBetween(1, 10),
-                'produto_id'    =>  $faker->numberBetween(1, 100),
-                'quantidade'    =>  $faker->numberBetween(1, 10),
-                'status'    =>  $faker->numberBetween(0, 2),
-
-                
+                'orcamento_id'    =>  $faker->numberBetween(1, 100),
+                'total'    =>  $faker->randomFloat(2, 200, 5000),
+                'status'    =>  $faker->numberBetween(0, 1),  
             ]);
         };
     }

@@ -15,5 +15,9 @@ class Cliente extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function vendas(){
+        return $this->hasOne(Venda::class,'cliente_id' , 'id');
+    }
     
 }

@@ -8,12 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Venda extends Model
 {
     use HasFactory;
+    
     protected $fillable = [
-        'comprador_id',
+        'cliente_id',
         'produto_id',
         'total',
         'status',
         'created_at',
         'updated_at',
     ];
+
+    public function cliente(){
+        return $this->belongsTo(Cliente::class,'cliente_id' ,'id' );
+    }
 }

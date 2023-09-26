@@ -2,20 +2,59 @@
 
 body {
     font-family: 'Martian Mono', 'sans-serif';
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+    
 }
 
-.conteiner{
+.conteiner-body{
     background-color:rgb(121, 201, 255);
     width: 900px;
-    padding: 50px;
+    padding: 0px 100px;
     margin: auto;
-    border-style: double ;
+    padding: 0px;
 
 }
+.conteiner-header{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right:5px;
+    text-align: right;
+}
 
-td{
+
+
+.conteiner-header-link{
+    padding-top: 10px;
+}
+
+.conteiner-header-link a{
+background-color: rgb(12, 235, 4);
+padding: 5px 10px;
+border-radius: 25px;
+text-decoration: none;
+color:black;
+}
+
+.conteiner {
+    margin: 0px 50px;
+    text-align: left;
+    padding: 5px;
+    }
+
+.conteiner table{
+    min-width: 100%;
     font-size: 14px;
-    list-style: none;
+    }
+.conteiner td {
+    border:solid 1px;
     padding: 0;
     margin: 0;
 }
+
+td a {
+    margin-left: 15px;
+    text-decoration: none;
+} 
+

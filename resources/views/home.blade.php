@@ -1,7 +1,6 @@
 @extends('master')
 
 @section('content')
-
-<h2>Home</h2>
+<h2>HOME</h2>
 
 @endsection

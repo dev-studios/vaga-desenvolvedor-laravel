@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 <body>
-
-    <div class="conteiner">
-        @yield("content")
-    </div>
+    <div class="conteiner-body">
+        <div class="conteiner-header">
+            @include('header')
+        </div>
     
+        <div class="conteiner">
+        @yield("content")
+        </div>
 </body>
 </html>

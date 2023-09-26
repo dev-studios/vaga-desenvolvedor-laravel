@@ -26,27 +26,7 @@ class ClienteController extends Controller
         
     }
 
-    public function detalheCliente($id)
-    {
-        $cliente = Cliente::where('id' , $id)->first();
- 
-        if($cliente){
-            $vendas = $cliente->vendas()->get();
-            
-            if($vendas){
-                return view('clientedetalhe',[
-                        'cliente' => $cliente,
-                        'vendas'  => $vendas
-                ]);
-            }else{
-
-                return view('clientedetalhe',[
-                    'cliente' => $cliente
-
-                    ]);
-                }
-        }      
-    }
+   
 
     public function create()
     {

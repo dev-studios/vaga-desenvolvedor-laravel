@@ -4,36 +4,40 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Venda;
+use App\Models\Cliente;
 
 class VendaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public readonly Venda $venda;
+    public readonly Cliente $cliente;
+
+
+    public function __construct(){
+        $this->venda = new venda();
+        $this->cliente = new cliente();
+    }
+    
+
+
     public function index()
     {
-        //
+        $vendas = $this->venda->all();
+        $clientes =$this->cliente->all();
+        
+        return view('vendas',['vendas' => $vendas,'clientes' => $clientes]);
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show()
     {
         

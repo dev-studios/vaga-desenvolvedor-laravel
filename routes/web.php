@@ -22,7 +22,6 @@ use App\Models\Cliente;
 Route::get('/',[HomeController::class,'index'])->name('home');
 
 //listando rota por rota
-
 Route::get('/clientes',[ClienteController::class,'index'])->name('clientes.index');
 Route::get('/clientes/create',[ClienteController::class,'create'])->name('clientes.create');
 Route::post('/clientes',[ClienteController::class,'store'])->name('clientes.store');
@@ -31,13 +30,6 @@ Route::get('/clientes/{cliente}/edit',[ClienteController::class,'edit'])->name('
 Route::put('/clientes/{cliente}',[ClienteController::class,'update'])->name('clientes.update');
 Route::delete('/clientes/{cliente}',[ClienteController::class,'destroy'])->name('clientes.destroy');
 
-//listando todas as rotas direto
-Route::resource('compras', CompraController::class);
+//listando todas as rotas resource
+Route::resource('vendas', VendaController::class);
 
-
-
-
-
-//Route::get('/cliente/{id}',[ ClienteController::class, 'detalheCliente']);
-//Route::get('/venda',[ VendaController::class, 'show']);
-//Route::get('/cliente',[ ClienteController::class, 'index']);

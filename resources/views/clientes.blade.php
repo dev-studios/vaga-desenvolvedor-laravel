@@ -13,10 +13,10 @@
 
         @foreach($clientes as $cliente)
             <tr>
-            <td> {{ $cliente->nome }} </td>
+            <td><div class="conteiner-nome-cliente"> {{ $cliente->nome }} </div></td>
             <td><a href="">Compras</a></td>
             <td><a href=" {{ route('clientes.edit',['cliente' => $cliente->id]) }} ">editar</a></td>
-            <td><a href="">deletar</a></td>
+            <td><a href="{{ route('clientes.show',['cliente' => $cliente->id]) }}">deletar</a></td>
         @endforeach         
         </table>
  

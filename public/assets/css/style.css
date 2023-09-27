@@ -59,6 +59,10 @@ td a {
     text-decoration: none;
 } 
 
+.conteiner-nome-cliente {
+    padding-left: 5px;
+}
+
 .conteiner-botao-cadastro{
     text-align: center;
 }

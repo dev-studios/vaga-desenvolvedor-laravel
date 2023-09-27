@@ -30,12 +30,21 @@ class ClienteController extends Controller
 
     public function create()
     {
-        //
+        return view('user_create');
     }
     
     public function store(Request $request)
     {
-        //
+        $created=$this->cliente->create([
+            'nome' => $request->input('nome'),
+            'email' => $request->input('email'),
+        ]);
+        
+        if($created){
+            return redirect()->back()->with('message','Cliente cadastrado com SUCESSO');
+        }
+        return redirect()->back()->with('message','ERRO');
+
     }
 
     public function show($id)

@@ -24,7 +24,7 @@ class VendaSeeder extends Seeder
                 'cliente_id'  =>  $faker->numberBetween(1, 10),
                 'orcamento_id'    =>  $faker->numberBetween(1, 100),
                 'total'    =>  $faker->randomFloat(2, 200, 5000),
-                'status'    =>  $faker->numberBetween(0, 1),  
+                'status'    =>  $faker->numberBetween(0, 2),  
             ]);
         };
     }

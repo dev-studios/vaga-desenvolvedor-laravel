@@ -19,14 +19,18 @@
             </tr>
             
         @foreach($vendas as $venda)
-            @if($venda->status == 1)
+            @if($venda->status == 0)
                 @php
-                    $status = 'Concluida';
+                    $status = 'Cancelada';
                 @endphp                
-            @else
+            @elseif($venda->status == 1)
                 @php
                     $status = 'Em Aberto';
-                @endphp  
+                @endphp 
+            @elseif($venda->status == 2)
+                @php
+                    $status = 'Concluída';
+                @endphp 
             @endif
             <tr>
                 <td>{{$venda->id}}</td>

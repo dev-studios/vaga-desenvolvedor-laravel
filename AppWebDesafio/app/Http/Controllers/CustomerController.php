@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use Illuminate\Http\RedirecResponse;
 use Illuminate\Http\Request;
 use Iluminate\View\View;
 
@@ -62,24 +63,42 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Customer $customer)
+    public function edit(Customer $customer):View
     {
-        //
+        return view('customer.edit', compact('customer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, Customer $customer):RedirectResponse
     {
-        //
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'birthdate' => 'date',
+            'cpf' => 'required|string|max:255',
+            'rg' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'postal_code' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+        ]);
+
+        $cliente->update($request->all());
+
+        return redirect()->route('customer.index')->with('success', 'Cliente atualizado com sucesso');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Customer $customer)
+    public function destroy(Customer $customer):RedirectResponse
     {
-        //
+        $customer->delete();
+        return redirect()->route('customer.index')->with('success', 'Cliente deletado com sucesso');
     }
 }

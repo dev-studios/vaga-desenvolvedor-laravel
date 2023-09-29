@@ -30,7 +30,7 @@ class ClienteController extends Controller
 
     public function create()
     {
-        return view('user_create');
+        return view('cliente_create');
     }
     
     public function store(Request $request)

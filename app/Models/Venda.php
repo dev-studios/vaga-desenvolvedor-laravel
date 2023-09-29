@@ -11,7 +11,7 @@ class Venda extends Model
     
     protected $fillable = [
         'cliente_id',
-        'produto_id',
+        'orcamento_id',
         'total',
         'status',
         'created_at',

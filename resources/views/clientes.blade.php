@@ -2,9 +2,6 @@
 @extends('master')
 
 @section('content')
-    
-    
-        
         <table>
             <tr>
                 <td><h2>Clientes</h2></td>

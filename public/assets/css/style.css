@@ -8,6 +8,14 @@ body {
     
 }
 
+h1, h2, h3, h4, h5, h6 {
+    margin: 5px 2px;
+}
+
+a{
+    text-decoration: none;
+}
+
 .conteiner-body{
     background-color:rgb(121, 201, 255);
     width: 900px;
@@ -30,6 +38,7 @@ body {
 }
 
 .conteiner-header-link a{
+font-size: 16px;
 background-color: rgb(12, 235, 4);
 padding: 5px 10px;
 border-radius: 25px;
@@ -54,10 +63,6 @@ color:black;
     margin: 0;
 }
 
-td a {
-    margin-left: 15px;
-    text-decoration: none;
-} 
 
 .conteiner-nome-cliente {
     padding-left: 5px;
@@ -68,10 +73,32 @@ td a {
 }
 
 .conteiner-botao-cadastro a{
+    font-size: 16px;
     background-color: rgb(12, 235, 4);
     padding: 5px 10px;
     border-radius: 25px;
     text-decoration: none;
     color:black;
 
+}
+
+.conteiner-produto{
+    display: flex;
+}
+.conteiner-produto-link{
+    width: min-content;
+    margin: auto 0px;  
+}
+.conteiner-produto-link a{
+    color: black;
+    background-color: #ffffff;;
+    border-radius: 25px;
+    padding: auto;
+    
+    
+}
+.conteiner-produto-conteudo{
+    width: min-content;
+
+    
 }

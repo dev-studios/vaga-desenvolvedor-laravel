@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\RedirecResponse;
 use Illuminate\Http\Request;
-use Iluminate\View\View;
+use Illuminate\View\View;
 
 class CustomerController extends Controller
 {
@@ -15,8 +15,8 @@ class CustomerController extends Controller
     public function index():View
     {
         $customer = Customer::latest()->paginate(5);
-        return view('customer.index', compact('customer'))
-                        ->with('i', (request()->input('page', 1) - 1) * 5);
+        return View('customer.index', compact('customer'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -35,7 +35,7 @@ class CustomerController extends Controller
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'birthdate' => 'date',
+            'birthdate' => 'required|date',
             'cpf' => 'required|string|max:255',
             'rg' => 'required|string|max:255',
             'phone_number' => 'required|string|max:255',
@@ -46,7 +46,7 @@ class CustomerController extends Controller
             'state' => 'required|string|max:255',
         ]);
 
-        Customer::creat($request->all());
+        Customer::create($request->all());
 
         return redirect()->route('customer.index')->with('success','O cliente foi criado com sucesso!');
 

@@ -19,13 +19,15 @@
 
     <table class="table table-bordered">
         <tr>
+            <th>Id</th>
             <th>Nome</th>
-            <th width="280px">Action</th>
+            <th width="300px">Ação</th>
         </tr>
         @foreach ($customer as $customer)
 
         <tr>
-            <td>{{ ++$i}}</td>
+            <td>{{ $customer->id}}</td>
+            <td>{{ $customer->first_name}} {{ $customer->last_name}}
             <td>
                 <form action="{{ route('customers.destroy',$customer->id) }}" method="POST">
 
@@ -39,6 +41,6 @@
                 </form>
             </td>
         </tr>
-        @endforeach
-    </table>
-@endsection
+        @endforeach       
+    </table>         
+  @endsection

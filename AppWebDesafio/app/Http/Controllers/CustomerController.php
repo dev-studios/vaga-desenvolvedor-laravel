@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
-use Illuminate\Http\RedirecResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -48,8 +48,8 @@ class CustomerController extends Controller
 
         Customer::create($request->all());
 
-        return redirect()->route('customer.index')->with('success','O cliente foi criado com sucesso!');
-
+        return redirect()->route('customers.index')
+            ->with('success','O cliente foi criado com sucesso!');
     }
 
     /**
@@ -87,9 +87,9 @@ class CustomerController extends Controller
             'state' => 'required|string|max:255',
         ]);
 
-        $cliente->update($request->all());
+        $customer->update($request->all());
 
-        return redirect()->route('customer.index')->with('success', 'Cliente atualizado com sucesso');
+        return redirect()->route('customers.index')->with('success', 'Cliente atualizado com sucesso');
 
     }
 
@@ -99,6 +99,6 @@ class CustomerController extends Controller
     public function destroy(Customer $customer):RedirectResponse
     {
         $customer->delete();
-        return redirect()->route('customer.index')->with('success', 'Cliente deletado com sucesso');
+        return redirect()->route('customers.index')->with('success', 'Cliente deletado com sucesso');
     }
 }

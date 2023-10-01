@@ -22,7 +22,9 @@ Route::get('/', function () {
 Route::resource('customers', CustomerController::class);
 Route::resource('products', ProductController::class);
 Route::resource('orders', OrderController::class);
-
+Route::get('/clientes/novo', [App\Http\Controllers\CustomerController::class, 'index'])->name('customer.create');
+Route::get('/produtos/novo', [App\Http\Controllers\ProductController::class, 'index'])->name('product.create');
+Route::get('/pedidos/novo', [App\Http\Controllers\OrderController::class, 'index'])->name('order.create');
 
 Auth::routes();
 

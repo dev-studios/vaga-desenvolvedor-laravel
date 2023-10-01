@@ -1,20 +1,20 @@
-@extends('customer.layout')
+@extends('order.layout')
 
 @section('content')
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Novo Cliente</h2>
+                <h2>Novo Pedido</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('customers.index') }}"> Voltar</a>
+                <a class="btn btn-primary" href="{{ route('orders.index') }}"> Voltar</a>
             </div>
         </div>
     </div>
 
     @if ($errors->any())
     <div class="alert alert-danger">
-            <strong>Whoops!</strong> Houve um problema com a criação do objeto.<br><br>
+            <strong>Whoops!</strong> Houve um problema com a criação do Pedido.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -24,78 +24,65 @@
 
     @endif
 
-    <form action="{{ route('customers.store') }}" method="POST">
+    <form action="{{ route('orders.store') }}" method="POST">
         @csrf
 
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Nome:</strong>
-                    <input type="text" name="first_name" class="form-control" placeholder="Exemplo: Maria">
-                </div>
-            </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="form-group">
+        <strong>Produto:</strong>
+        <select name="product_id" class="form-control">
+            <option value="" disabled selected>Selecione um produto</option>
+            @foreach($product as $product)
+                <option value="{{ $product->id }}">{{ $product->product_name }}</option>
+            @endforeach
+        </select>
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="form-group">
+        <strong>Cliente:</strong>
+        <select name="customer_id" class="form-control">
+            <option value="" disabled selected>Selecione um Cliente</option>
+            @foreach($customer as $customer)
+                <option value="{{ $customer->id }}">{{ $customer->first_name }}</option>
+            @endforeach
+        </select>
+    </div>
+</div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Sobrenome:</strong>
-                    <input type="text" name="last_name" class="form-control" placeholder="Exemplo: Maria">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Data de nascimento:</strong>
-                    <input type="date" name="birthdate" class="form-control" placeholder="Exemplo: Maria">
+                    <strong>Data de negociação:</strong>
+                    <input type="date" name="negotiation_date" class="form-control" placeholder="">
                 </div>
             </div>             
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>CPF:</strong>
-                    <input type="text" name="cpf" class="form-control" placeholder="Exemplo: Maria">
+                    <strong>Preço unitário:</strong>
+                    <input type="decimal" name="unity_price" class="form-control" placeholder="">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>RG:</strong>
-                    <input type="text" name="rg" class="form-control" placeholder="Exemplo: Maria">
+                    <strong>Quantidade:</strong>
+                    <input type="int" name="quantity" class="form-control" placeholder="">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Telefone:</strong>
-                    <input type="text" name="phone_number" class="form-control" placeholder="Exemplo: Maria">
+                    <strong>Valor Total:</strong>
+                    <input type="text" name="total_amount" class="form-control" placeholder="">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>E-mail:</strong>
-                    <input type="text" name="email" class="form-control" placeholder="Exemplo: Maria">
+                    <strong>Status:</strong>
+                    <input type="char" name="status" class="form-control" placeholder="">
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>CEP:</strong>
-                    <input type="text" name="postal_code" class="form-control" placeholder="Exemplo: Maria">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Endereço:</strong>
-                    <input type="text" name="address" class="form-control" placeholder="Exemplo: Maria">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Cidade:</strong>
-                    <input type="text" name="city" class="form-control" placeholder="Exemplo: Maria">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Estado:</strong>
-                    <input type="text" name="state" class="form-control" placeholder="Exemplo: Maria">
-                </div>
-            </div>
-             
+                         
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary"> Submit</button>
             </div>           

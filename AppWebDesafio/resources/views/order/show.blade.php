@@ -1,13 +1,13 @@
-@extends('customer.layout')
+@extends('order.layout')
 
 @section('content')
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Mostrar Cliente</h2>
+                <h2>Mostrar Produto</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('customers.index') }}"> Voltar</a>
+                <a class="btn btn-primary" href="{{ route('orders.index') }}"> Voltar</a>
             </div>
         </div>
     </div>
@@ -15,38 +15,29 @@
     <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Nome:</strong>
-                    {{ $customer->first_name}}
+                    <strong>Id do Pedido:</strong>
+                    {{ $order->id}}
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                    <strong>Sobrenome:</strong>
-                    {{ $customer->last_name}}
+                    <strong>Id do Cliente:</strong>
+                    {{ $order->customer_id}}
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                    <strong>Data de Nascimento:</strong>
-                    {{ $customer->birthdate}}
+                    <strong>Id do Produto:</strong>
+                    {{ $order->product_id}}
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                    <strong>CPF:</strong>
-                    {{ $customer->cpf}}
+                    <strong>Data de Negociação:</strong>
+                    {{ $order->negociation_date}}
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                    <strong>RG:</strong>
-                    {{ $customer->rg}}
+                    <strong>Preço Unitário:</strong>
+                    {{ $order->unity_price}}
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                    <strong>Telefone:</strong>
-                    {{ $customer->phone_number}}
+                    <strong>Quantidade:</strong>
+                    {{ $order->quantity}}
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                    <strong>E-mail:</strong>
-                    {{ $customer->email}}
+                    <strong>Valor Total:</strong>
+                    {{ $order->total_amount}}
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                    <strong>CEP:</strong>
-                    {{ $customer->postal_code}}
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                    <strong>Endereço:</strong>
-                    {{ $customer->address}}
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                    <strong>Cidade:</strong>
-                    {{ $customer->city}}
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                    <strong>Estado:</strong>
-                    {{ $customer->state}}
+                    <strong>Status:</strong>
+                    {{ $order->status}}
                 </div>
             </div>
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\Products;
+use App\Models\Customer;
+use App\Models\Orders;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -14,7 +16,7 @@ class OrderController extends Controller
      */
     public function index():View
     {
-        $order = Order::latest()->paginate(5);
+        $order = Orders::latest()->paginate(5);
         return view('order.index', compact('order'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -24,7 +26,9 @@ class OrderController extends Controller
      */
     public function create():View
     {
-        return view('order.create');
+        $product = Products::all(); // Recupere todos os produtos da tabela products
+        $customer = Customer::all(); // Recupere todos os Clientes da tabela products
+        return view('order.create', compact('product', 'customer'));
     }
 
     /**
@@ -42,7 +46,7 @@ class OrderController extends Controller
             'status' => 'required|string|in:A,P,C',
         ]);
 
-        Order::create($request->all());
+        Orders::create($request->all());
 
         return redirect()->route('orders.index')
             ->with('success', 'O pedido foi criado com sucesso!');
@@ -51,7 +55,7 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function show(Orders $order)
     {
         return view('order.show', compact('order'));
     }
@@ -59,15 +63,18 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Order $order):View
+    public function edit(Orders $order):View
     {
-        return view('order.edit', compact('order'));
+        $product = Products::all(); 
+        $customer = Customer::all(); 
+        $order = Orders::all(); 
+        return view('order.edit', compact('order', 'product', 'customer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $order):RedirectResponse
+    public function update(Request $request, Orders $order):RedirectResponse
     {
         $request->validate([
             'customer_id' => 'required|exists:customers,id',
@@ -87,7 +94,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order):RedirectResponse
+    public function destroy(Orders $order):RedirectResponse
     {
         $order->delete();
         return redirect()->route('orders.index')->with('success', 'Pedido deletado com sucesso');
